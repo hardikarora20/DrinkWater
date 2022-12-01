@@ -6,9 +6,17 @@ setInterval(function () {
 
 window.onload = function() {
     setwater();
-    if(document.URL.includes("?"))
-        recieve();
+    if(document.URL.includes("?")){
+        recieve();}
+    container(localStorage.getItem("lastcontainer"));
 };
+
+setTimeout(function(){
+    document.getElementsByClassName("load")[0].classList.add("hidefade");
+    setTimeout(function(){
+        document.getElementsByClassName("load")[0].style.display="none";
+    },1000)
+},2000)
 
 function watercolor(){
     const prog=document.getElementsByTagName("progress")[0].value;
@@ -28,7 +36,7 @@ function watercolor(){
 }
 
 function waterup(){
-    document.getElementsByTagName("progress")[0].value+=max/incamount;
+    document.getElementsByTagName("progress")[0].value+=(incamount/max)*100;
     watercolor();
     localStorage.setItem("lastlevel",document.getElementsByTagName("progress")[0].value);
 }
@@ -44,7 +52,7 @@ function reset(){
 }
 
 function share(){
-    document.getElementById("shareqr").style.background='url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hardikkk20.github.io/DrinkWater/index.html?'+localStorage.getItem("lastlevel")+'Q'+max+'")';
+    document.getElementById("shareqr").style.background='url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hardikkk20.github.io/DrinkWater/index.html?'+localStorage.getItem("lastlevel")+'Q'+max+'Q'+incamount+'")';
 }
 
 function recieve(){
@@ -56,4 +64,45 @@ function recieve(){
     localStorage.setItem("lastlevel",recieveddata[0]);
     setwater();
     max=parseInt(recieveddata[1]);
+    incamount=parseInt(recieveddata[2]);
+}
+
+function container(c){
+    document.getElementById("cup").style.fontSize="0rem";
+    document.getElementById("glas").style.fontSize="0rem";
+    document.getElementById("largeglass").style.fontSize="0rem";
+    document.getElementById("bottle").style.fontSize="0rem";
+    switch(c){
+        case 1:
+            incamount=50;
+            console.log("case 1");
+            document.getElementById("cup").style.fontSize="1rem";
+            break;
+        case 2:
+            console.log("case 2");
+            document.getElementById("glas").style.fontSize="1rem";
+            incamount=100;
+            break;
+                
+        case 3:
+            console.log("case 3");
+            document.getElementById("largeglass").style.fontSize="1rem";
+            incamount=200;
+            break;
+            
+        case 4:
+            console.log("case 4");
+            document.getElementById("bottle").style.fontSize="1rem";
+            incamount=500;
+            break;
+    }
+    localStorage.setItem("lastcontainer",c);
+
+}
+
+function setcontainer(){
+    if(localStorage.getItem("lastcontainer")!=null)
+        {
+            container(localStorage.getItem("lastcontainer"));
+        }
 }
