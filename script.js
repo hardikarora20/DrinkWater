@@ -1,5 +1,6 @@
 var incamount=100;
 var max=1000;
+var waterconsumed=0;
 setInterval(function () {
     console.log("hey");
 },1000)
@@ -36,9 +37,11 @@ function watercolor(){
 }
 
 function waterup(){
+    waterconsumed+=incamount;
     document.getElementsByTagName("progress")[0].value+=(incamount/max)*100;
     watercolor();
     localStorage.setItem("lastlevel",document.getElementsByTagName("progress")[0].value);
+    consumed();
 }
 
 function setwater(){
@@ -97,5 +100,16 @@ function container(c){
             break;
     }
     localStorage.setItem("lastcontainer",c);
+}
 
+function consumed(){
+    if(waterconsumed<1000){
+        document.getElementById("glass").innerText=waterconsumed;
+        document.getElementById("glassunit").innerText=" mL"
+    }
+    else{
+        document.getElementById("glass").innerText=waterconsumed/1000;
+        document.getElementById("glassunit").innerText=" L"
+    }
+    
 }
