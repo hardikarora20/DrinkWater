@@ -44,14 +44,14 @@ function reset(){
 }
 
 function share(){
-    document.getElementById("shareqr").style.background='url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hardikkk20.github.io/DrinkWater/index.html?'+localStorage.getItem("lastlevel")+'+'+max+'")';
+    document.getElementById("shareqr").style.background='url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hardikkk20.github.io/DrinkWater/index.html?'+localStorage.getItem("lastlevel")+'Q'+max+'")';
 }
 
 function recieve(){
     let url=document.URL;
     const ray = url.split("?");
     const data=ray[1];
-    const recieveddata = data.split("+");
+    const recieveddata = data.split("Q");
     console.log(recieveddata);
     localStorage.setItem("lastlevel",recieveddata[0]);
     setwater();
