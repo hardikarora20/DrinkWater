@@ -3,6 +3,11 @@ var max=1000;
 setInterval(function () {
     console.log("hey");
 },1000)
+
+window.onload = function() {
+    setwater();
+};
+
 function watercolor(){
     const prog=document.getElementsByTagName("progress")[0].value;
     const root = document.querySelector(":root"); //grabbing the root element
@@ -19,7 +24,19 @@ function watercolor(){
         root.style.setProperty("--fillcolor", 'rgb(26, 113, 184)');
     }
 }
+
 function waterup(){
     document.getElementsByTagName("progress")[0].value+=max/incamount;
     watercolor();
+    localStorage.setItem("lastlevel",document.getElementsByTagName("progress")[0].value);
+}
+
+function setwater(){
+    if(localStorage.getItem("lastlevel")!=null)
+        {document.getElementsByTagName("progress")[0].value=parseInt(localStorage.getItem("lastlevel"));}
+    watercolor();
+}
+
+function reset(){
+    localStorage.clear();
 }
