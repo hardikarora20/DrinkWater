@@ -8,7 +8,7 @@ window.onload = function() {
     setwater();
     if(document.URL.includes("?")){
         recieve();}
-    container(localStorage.getItem("lastcontainer"));
+    container(parseInt(localStorage.getItem("lastcontainer")));
 };
 
 setTimeout(function(){
@@ -52,7 +52,7 @@ function reset(){
 }
 
 function share(){
-    document.getElementById("shareqr").style.background='url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hardikkk20.github.io/DrinkWater/index.html?'+localStorage.getItem("lastlevel")+'Q'+max+'Q'+incamount+'")';
+    document.getElementById("shareqr").style.background='url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hardikkk20.github.io/DrinkWater/index.html?'+localStorage.getItem("lastlevel")+'Q'+max+'Q'+localStorage.getItem("lastcontainer")+'")';
 }
 
 function recieve(){
@@ -64,7 +64,7 @@ function recieve(){
     localStorage.setItem("lastlevel",recieveddata[0]);
     setwater();
     max=parseInt(recieveddata[1]);
-    incamount=parseInt(recieveddata[2]);
+    container(parseInt(recieveddata[2]));
 }
 
 function container(c){
@@ -98,11 +98,4 @@ function container(c){
     }
     localStorage.setItem("lastcontainer",c);
 
-}
-
-function setcontainer(){
-    if(localStorage.getItem("lastcontainer")!=null)
-        {
-            container(localStorage.getItem("lastcontainer"));
-        }
 }
