@@ -1,83 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-language" content="en">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+            function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Effort', 'Amount given'],
-          ['My all',     100],
-          ['No'    ,      50],
-        ]);
+                var data = google.visualization.arrayToDataTable([
+                    [
+                        'Effort', 'Amount given'
+                    ],
+                    [
+                        'My all', 100
+                    ],
+                    [
+                        'No', 50
+                    ],
+                ]);
 
-        var options = {
-          pieHole: 0.5,
-          pieSliceTextStyle: {
-            color: 'black',
-          },
-          legend: 'none',
-          backgroundColor: '#B5E2F5',
-          slices: {
-            0: { color: '#1960ad' },
-            1: { color: '#899299' }
-          }
-        };
+                var options = {
+                    pieHole: 0.5,
+                    pieSliceTextStyle: {
+                        color: 'black'
+                    },
+                    legend: 'none',
+                    backgroundColor: '#B5E2F5',
+                    slices: {
+                        0: {
+                            color: '#1960ad'
+                        },
+                        1: {
+                            color: '#899299'
+                        }
+                    }
+                };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
-        chart.draw(data, options);
-      }
-    </script>
-</head>
-<body>
-    <div class="load">
-        <div id="waveboat"></div>
-    </div>
-    <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
-    <div class="main">
-        <div id="glass" onclick="waterup()">dasd</div>
-        <!-- <div id="shareqr" onclick="share()"></div> -->
-        <!-- <div id="donut_single"></div> -->
-        <progress min="0" value="0" max="100"></progress>
-    </div>
-    <div class="container">
-      <div id="cup" onclick="container(1)">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M11 6H34V28.1538C34 30.7652 33.3077 33.2696 32.0753 35.1161C30.8429 36.9626 29.1714 38 27.4286 38H17.5714C15.8286 38 14.1571 36.9626 12.9247 35.1161C11.6923 33.2696 11 30.7652 11 28.1538V6Z" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          
-                 
-      </div>
-      <div id="glas" onclick="container(2)">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M27.7 39.8333H15.9667C15.0574 39.8384 14.1787 39.5053 13.5011 38.8989C12.8235 38.2925 12.3955 37.4559 12.3 36.5517L9 5H34.6667L31.3483 36.5517C31.2532 37.4528 30.8277 38.2868 30.1541 38.8928C29.4804 39.4987 28.6061 39.8338 27.7 39.8333Z" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M10.8333 21.5C12.4201 20.31 14.3499 19.6667 16.3333 19.6667C18.3167 19.6667 20.2466 20.31 21.8333 21.5C23.4201 22.69 25.3499 23.3333 27.3333 23.3333C29.3167 23.3333 31.2466 22.69 32.8333 21.5" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-                 
-      </div>
-      <div id="largeglass" onclick="container(3)">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8.25 5.5H35.75" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M11 6V38C11 39.0609 11.3863 40.0783 12.0739 40.8284C12.7616 41.5786 13.6942 42 14.6667 42H29.3333C30.3058 42 31.2384 41.5786 31.9261 40.8284C32.6137 40.0783 33 39.0609 33 38V6" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M11 25.6667H33" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-                  
-      </div>
-      <div id="bottle" onclick="container(4)">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21.5 5H16V10L9.92607 14.8333V22.1667V36.8333C9.92607 37.8058 10.3124 38.7384 11 39.4261C11.6876 40.1137 12.6203 42 13.5927 42H28.2594C29.2319 42 30.1645 40.1137 30.8521 39.4261C31.5398 38.7384 31.9261 37.8058 31.9261 36.8333V22.1667V14.8333L26.5 10V5H21.5Z" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-                  
-      </div>
-    </div>
-</body>
-</html>
+                var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+                chart.draw(data, options);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="load">
+            <div id="waveboat"></div>
+        </div>
+        <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
+        <div class="main">
+            <div id="glass" onclick="waterup()">
+                <div id="glassback"></div>
+                <span id="gamount">0</span>
+                <span id="gunit"> mL</span>
+            </div>
+            <!-- <div id="shareqr" onclick="share()"></div> -->
+            <!-- <div id="donut_single"></div> -->
+            <progress min="0" value="0" max="100"></progress>
+          </div>
+          <div class="centercontainer">
+          <div class="container">
+            <div id="cup" onclick="container(1)">
+                <svg width="44" height="44" viewbox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 6H34V28.1538C34 30.7652 33.3077 33.2696 32.0753 35.1161C30.8429 36.9626 29.1714 38 27.4286 38H17.5714C15.8286 38 14.1571 36.9626 12.9247 35.1161C11.6923 33.2696 11 30.7652 11 28.1538V6Z" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+
+            </div>
+            <div id="glas" onclick="container(2)">
+                <svg width="44" height="44" viewbox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M27.7 39.8333H15.9667C15.0574 39.8384 14.1787 39.5053 13.5011 38.8989C12.8235 38.2925 12.3955 37.4559 12.3 36.5517L9 5H34.6667L31.3483 36.5517C31.2532 37.4528 30.8277 38.2868 30.1541 38.8928C29.4804 39.4987 28.6061 39.8338 27.7 39.8333Z" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10.8333 21.5C12.4201 20.31 14.3499 19.6667 16.3333 19.6667C18.3167 19.6667 20.2466 20.31 21.8333 21.5C23.4201 22.69 25.3499 23.3333 27.3333 23.3333C29.3167 23.3333 31.2466 22.69 32.8333 21.5" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </div>
+            <div id="largeglass" onclick="container(3)">
+                <svg width="44" height="44" viewbox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.25 5.5H35.75" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11 6V38C11 39.0609 11.3863 40.0783 12.0739 40.8284C12.7616 41.5786 13.6942 42 14.6667 42H29.3333C30.3058 42 31.2384 41.5786 31.9261 40.8284C32.6137 40.0783 33 39.0609 33 38V6" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11 25.6667H33" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </div>
+            <div id="bottle" onclick="container(4)">
+                <svg width="44" height="44" viewbox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21.5 5H16V10L9.92607 14.8333V22.1667V36.8333C9.92607 37.8058 10.3124 38.7384 11 39.4261C11.6876 40.1137 12.6203 42 13.5927 42H28.2594C29.2319 42 30.1645 40.1137 30.8521 39.4261C31.5398 38.7384 31.9261 37.8058 31.9261 36.8333V22.1667V14.8333L26.5 10V5H21.5Z" stroke="#B5E2F5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>

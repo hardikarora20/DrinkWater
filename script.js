@@ -10,6 +10,7 @@ window.onload = function() {
     if(document.URL.includes("?")){
         recieve();}
     container(parseInt(localStorage.getItem("lastcontainer")));
+    setconsumed();
 };
 
 setTimeout(function(){
@@ -104,12 +105,21 @@ function container(c){
 
 function consumed(){
     if(waterconsumed<1000){
-        document.getElementById("glass").innerText=waterconsumed;
-        document.getElementById("glassunit").innerText=" mL"
+        document.getElementById("gamount").innerText=waterconsumed;
+        document.getElementById("gunit").innerText=" mL"
     }
     else{
-        document.getElementById("glass").innerText=waterconsumed/1000;
-        document.getElementById("glassunit").innerText=" L"
+        document.getElementById("gamount").innerText=waterconsumed/1000;
+        document.getElementById("gunit").innerText=" L"
     }
-    
+    localStorage.setItem("waterconsumed",waterconsumed);
 }
+
+function setconsumed(){
+    if(localStorage.getItem("waterconsumed")!=null)
+        {
+            waterconsumed=parseInt(localStorage.getItem("waterconsumed"));
+            consumed();
+        }
+    }
+
